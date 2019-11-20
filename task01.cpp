@@ -1,18 +1,26 @@
 #include <cstdio>
-#include <cctype>
+#include <string.h>
 
-char* toUpper(char* input) {
-  int i=0;
-  char text;
-  while (input[i])
-  {
-    text=input[i];
-    putchar (toupper(text));
-    i++;
+char output[255];
+
+
+const char* toUpper(const char* inputx) {
+  char inputpole[strlen(inputx) + 1];
+  strncpy(inputpole, inputx, sizeof inputpole);
+  for(int i = 0; i < strlen(inputpole); i++) {
+    if(inputpole[i] > 96 &&  inputpole[i] < 123){
+      inputpole[i] = inputpole[i] - 32;
+    }
+    else {
+      inputpole[i] = inputpole[i];
+    }
   }
-  return 0;
+  strcpy (output,inputpole);
+  return output;
 }
 
- int main() {
-	char input[] = "Hello, World!";
-	puts(toUpper(input)); }
+int main() {
+  const char* input = "Hello, world!";
+  printf("%s", toUpper(input));
+  return 0;
+}
