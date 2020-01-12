@@ -11,28 +11,211 @@
     task03 2 2 13 6 -v // should print "sum of 4 arguments is 23"
     task03 -v 13 4 // should print "sum of 2 arguments is 17"
 */
+ //inspirace by Teemo6                                         
 
-#include<stdio.h>
+#include<cstdio>
 #include<string.h>
 
-int cisla;
-int suma;
+int outputNum;
+int inputCount = 0;
+int argument;
+char* fileName;
+int fileCount = 0;
+bool parV = false;
+bool parI = false;
+bool parF = false;
+bool bugFix = false;
 
-
-int main(int argc, char*argv[]) { 
-
-  if (strcmp(argv[1],"-i") == 0 ){
-    char osmdesat[80];
-    while(true) {
-      fgets(osmdesat, 50, stdin);
-      if(strlen(osmdesat) == 1) {
-      break;
-      }
-      sscanf(osmdesat,"%d", &cisla);
-      suma += cisla;  
+int funInter(){
+  char input[100];
+  int inputInt;
+  int result = 0;
+  while (input[0] != '\n'){
+    fgets (input,100,stdin);
+    if (input[0] != '\n'){
+      sscanf(input,"%d",&inputInt);
+      result += inputInt;
+      inputCount++;
     }
-     printf("Soucet cisel je : %d", suma);
-  } 
-   
+  }
+  return result;
 }
 
+int file(char* name){
+  int vysledek = 0;
+  int num;
+  FILE * soubor;
+  soubor = fopen (name,"r");
+  if (soubor!=NULL){
+    fileName = name;
+    parF = true;
+    while(!feof(soubor)){
+      fscanf (soubor, "%i", &num);
+      vysledek += num;
+      fileCount++;
+    }
+    vysledek -= num;
+    fileCount--;
+    fclose (soubor);
+  } else {
+    printf("Slozka neexistuje!");
+    bugFix = true;
+  }
+  return vysledek;
+}
+
+int main(int argc, char *argv[]){
+      //vstup         
+  for (int i=0;i<argc;i++){
+    if ((strcmp(argv[i],"-i") == 0) || (strcmp(argv[i],"-v") == 0) || (strcmp(argv[i],"-f") == 0)){
+        // parametr I
+      if (strcmp(argv[i],"-i") == 0){
+        parI = true;
+        outputNum = funInter();
+      }
+        // parametr V
+       if (strcmp(argv[i],"-v") == 0){
+        parV = true;
+      }
+        // parametr F
+      if (strcmp(argv[i],"-f") == 0){
+        if (i <= argc-2){
+          outputNum = file(argv[i+1]);
+        } else {
+          printf("Po parametru -f zadej jmeno slozky!");
+          bugFix = true;
+        }
+      }
+      // bez parametru
+    } else {
+      sscanf(argv[i],"%d",&argument);
+      outputNum += argument;
+    }
+  }
+    // Output
+  if (parV == true){
+    if (parI == true || parF == true){
+      if (parI == true){
+        printf ("Sum of %d numbers from standard input is %d",inputCount,outputNum);
+      }
+      if (parF == true){
+        printf ("Sum of %d numbers from file %s is %d",fileCount,fileName,outputNum);
+      }
+    } else {
+      if (bugFix == false){
+        printf ("Sum of %d numbers from arguments is %d",(argc-2),outputNum);
+      }
+    }
+  } else {
+    if (bugFix == false){
+      printf ("%d",outputNum);
+    }
+  }
+}                                                                                                                                               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

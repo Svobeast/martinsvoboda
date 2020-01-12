@@ -20,7 +20,6 @@ const char* toUpper(const char* inputx) {
 }
 
 int main() {
-  const char* input = "Hello, world!";
-  printf("%s", toUpper(input));
-  return 0;
+  char input[] = "Hello, World!";
+  puts(toUpper(input));
 }
