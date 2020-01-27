@@ -10,3 +10,6 @@ MS: Zatím jsem nepracoval na task03
  
 ## task 04
 MS: Hotovo, funguje, snad dobře
+
+## hra
+MS: hra funguje, rozumím tomu jen trošku. Pomáhal mi spolužák
