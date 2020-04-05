@@ -18,3 +18,6 @@ MS: hra funguje, rozumím tomu jen trošku. Pomáhal mi spolužák
 
 Dependency inversion principle chápu tak že větší důležitější classy nesmí záviset na menších méně důležitých classách.
 
+##task07
+
+//pracuju na nem
