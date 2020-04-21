@@ -20,4 +20,5 @@ Dependency inversion principle chápu tak že větší důležitější classy n
 
 ##task07
 
-kus hotovy, jeste kouknu na par videi a pak dodelam
+MS:hotovo
+
