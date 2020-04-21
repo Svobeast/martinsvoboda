@@ -20,7 +20,7 @@ public:
 		return buffer;
 	}
   operator double() {
-    return sizeif(Vector2);
+    return sizeof(Vector2);
   }
 };
 
@@ -47,8 +47,8 @@ public:
 		return Vector2b(n*x, n*y);
 	}
 
-  Vector2b operator*(Vector2b& other){
-  return Vector2b(this->x*other.x, this->y*other.y);
+  Vector2b operator*(Vector2b& vec){
+  return Vector2b(this->x*vec.x, this->y*vec.y);
   }
 };
 
@@ -69,4 +69,8 @@ int main() {
 
 	Vector2b v3 {2,4};
 	puts(3 * v3);
+
+  double vec2_size = v1;
+  printf("Vector2 je %.2f bytu velky\n", vec2_size);
+
 }
