@@ -17,6 +17,7 @@ MS: hra funguje, rozumím tomu jen trošku. Pomáhal mi spolužák
 ## task06
 
 Dependency inversion principle chápu tak že větší důležitější classy nesmí záviset na menších méně důležitých classách.
+Zkuste lépe popsat, jak funguje delegace závislostí.
 
 ##task07
 
